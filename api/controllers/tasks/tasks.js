@@ -20,4 +20,15 @@ const getTask = async (req, res) => {
   }
 };
 
-module.exports = { getTask };
+const deleteTask = async (req, res) => {
+  try {
+    const { id } = req.params;
+    if (!id) return res.send({ error: "faltan datos" });
+    const deleteTask = await Task.deleteOne({ _id: id });
+    res.status(200).json(deleteTask);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+module.exports = { getTask, deleteTask };
