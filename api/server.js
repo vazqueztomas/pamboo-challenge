@@ -15,7 +15,6 @@ server.get("/", (req, res, next) => {
 });
 
 server.use("/tasks", require("./routes/tasks"));
-
 connectDB();
 server.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);

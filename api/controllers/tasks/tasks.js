@@ -31,4 +31,18 @@ const deleteTask = async (req, res) => {
   }
 };
 
-module.exports = { getTask, deleteTask };
+const switchTaskComplete = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const taskComplete = await Task.findOneAndUpdate(
+      { _id: id },
+      { estado: true }
+    );
+
+    res.status(200).json(taskComplete);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+module.exports = { getTask, deleteTask, switchTaskComplete };
