@@ -19,24 +19,22 @@ const Input = () => {
     });
   };
   return (
-    <div>
-      <form onSubmit={e => onSubmitInput(e)}>
-        <Box flex={1} gap={4}>
-          <TextField
-            id="outlined-basic"
-            label="Ingresar tarea nueva"
-            variant="outlined"
-            onChange={e => setTareaNueva(e.target.value)}
-            value={tareaNueva}
-            inputProps={{ style: { color: "white" } }}
-          />
+    <form onSubmit={e => onSubmitInput(e)}>
+      <Box display={"flex"} justifyContent="space-between">
+        <TextField
+          id="outlined-basic"
+          label="Ingresar tarea nueva"
+          variant="outlined"
+          onChange={e => setTareaNueva(e.target.value)}
+          value={tareaNueva}
+          inputProps={{ style: { color: "white" } }}
+        />
 
-          <Button variant="contained" type="submit" size="large">
-            Agregar tarea
-          </Button>
-        </Box>
-      </form>
-    </div>
+        <Button variant="contained" type="submit" size="large">
+          Agregar tarea
+        </Button>
+      </Box>
+    </form>
   );
 };
 

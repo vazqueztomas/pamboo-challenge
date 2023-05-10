@@ -1,13 +1,7 @@
 import { useEffect, useState } from "react";
-import TrashIcon from "./TrashIcon";
-import {
-  IconButton,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemText,
-} from "@mui/material";
+import { Box, IconButton, List, ListItem, ListItemText } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
+import Loader from "./Loader";
 
 const Listado = () => {
   const [lista, setLista] = useState([]);
@@ -46,8 +40,8 @@ const Listado = () => {
   };
 
   return (
-    <div>
-      {loading ? <div>Cargando...</div> : null}
+    <Box width={["90%", "50%", "50%", "300px"]}>
+      {loading ? <Loader /> : null}
       {lista.length > 0 ? (
         <List sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           {lista.map((e, i) => (
@@ -61,7 +55,6 @@ const Listado = () => {
                 backgroundColor: "#1a1a1a",
                 padding: "0 8px",
                 borderRadius: "4px",
-                color: "white",
               }}
               key={i}>
               <ListItemText
@@ -71,7 +64,6 @@ const Listado = () => {
                     ? { textDecoration: "line-through" }
                     : { textDecoration: "none" }
                 }
-                sx={{ color: "white" }}
                 primary={e.titulo}
               />
               <IconButton
@@ -86,7 +78,7 @@ const Listado = () => {
       ) : (
         <div>No hay elementos en la lista</div>
       )}
-    </div>
+    </Box>
   );
 };
 
