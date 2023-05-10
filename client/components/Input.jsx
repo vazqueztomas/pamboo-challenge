@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Box, Button, TextField } from "@mui/material";
 
 const Input = () => {
   const [tareaNueva, setTareaNueva] = useState("");
@@ -20,12 +21,20 @@ const Input = () => {
   return (
     <div>
       <form onSubmit={e => onSubmitInput(e)}>
-        <input
-          type="text"
-          value={tareaNueva}
-          onChange={e => setTareaNueva(e.target.value)}
-        />
-        <button type="submit">Agregar tarea</button>
+        <Box flex={1} gap={4}>
+          <TextField
+            id="outlined-basic"
+            label="Ingresar tarea nueva"
+            variant="outlined"
+            onChange={e => setTareaNueva(e.target.value)}
+            value={tareaNueva}
+            inputProps={{ style: { color: "white" } }}
+          />
+
+          <Button variant="contained" type="submit" size="large">
+            Agregar tarea
+          </Button>
+        </Box>
       </form>
     </div>
   );

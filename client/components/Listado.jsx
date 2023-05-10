@@ -1,5 +1,13 @@
 import { useEffect, useState } from "react";
 import TrashIcon from "./TrashIcon";
+import {
+  IconButton,
+  List,
+  ListItem,
+  ListItemButton,
+  ListItemText,
+} from "@mui/material";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 const Listado = () => {
   const [lista, setLista] = useState([]);
@@ -27,13 +35,24 @@ const Listado = () => {
     getTareas();
   };
 
+  const markTaskComplete = async id => {
+    await fetch(`http://localhost:8080/tasks/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    getTareas();
+  };
+
   return (
     <div>
       {loading ? <div>Cargando...</div> : null}
       {lista.length > 0 ? (
-        <ul style={{ display: "flex", flexDirection: "column", gap: "4px" }}>
+        <List sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           {lista.map((e, i) => (
-            <li
+            <ListItem
+              sx={{ color: "white", borderColor: "white" }}
               style={{
                 display: "flex",
                 flexDirection: "row",
@@ -41,15 +60,29 @@ const Listado = () => {
                 alignItems: "center",
                 backgroundColor: "#1a1a1a",
                 padding: "0 8px",
+                borderRadius: "4px",
+                color: "white",
               }}
               key={i}>
-              <p>{e.titulo}</p>
-              <div onClick={() => deleteTarea(e._id)}>
-                <TrashIcon />
-              </div>
-            </li>
+              <ListItemText
+                onClick={() => markTaskComplete(e._id)}
+                style={
+                  e.estado
+                    ? { textDecoration: "line-through" }
+                    : { textDecoration: "none" }
+                }
+                sx={{ color: "white" }}
+                primary={e.titulo}
+              />
+              <IconButton
+                edge="end"
+                aria-label="delete"
+                onClick={() => deleteTarea(e._id)}>
+                <DeleteIcon />
+              </IconButton>
+            </ListItem>
           ))}
-        </ul>
+        </List>
       ) : (
         <div>No hay elementos en la lista</div>
       )}
