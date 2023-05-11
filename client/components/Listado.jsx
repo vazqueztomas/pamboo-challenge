@@ -30,7 +30,10 @@ const Listado = ({ lista, getTareas, loading }) => {
     getTareas();
   };
   return (
-    <Box width={["90%", "50%", "50%", "300px"]}>
+    <Box
+      width={["90%", "50%", "50%", "300px"]}
+      maxHeight="40%"
+      overflow={"auto"}>
       {loading ? (
         <Box display={"flex"} justifyContent={"center"}>
           <Loader />

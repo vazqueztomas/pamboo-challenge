@@ -8,6 +8,7 @@ import {
 } from "@mui/material";
 import Listado from "../components/Listado";
 import Input from "../components/Input";
+import panda from "../public/panda.png";
 
 const darkTheme = createTheme({
   palette: {
@@ -55,10 +56,20 @@ function App() {
         justifyContent={"center"}
         flexDirection={"column"}
         alignItems={"center"}
-        height={"100vh"}>
-        <Typography variant="h4" align="center">
-          Pamboo Challenge
-        </Typography>
+        height={"100vh"}
+        gap={4}>
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "center",
+            flexDirection: "column",
+            alignItems: "center",
+          }}>
+          <img src={panda} style={{ width: "30%" }} />
+          <Typography variant="h4" align="center">
+            Pamboo Challenge
+          </Typography>
+        </Box>
         <Listado lista={lista} getTareas={getTareas} loading={loading} />
         <Input addTarea={addTarea} />
       </Box>
