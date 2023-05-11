@@ -1,1 +1,1 @@
-export const URL_SERVER = "pamboo-challenge-production.up.railway.app";
+export const URL_SERVER = "https://pamboo-challenge-production.up.railway.app";
