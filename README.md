@@ -45,7 +45,7 @@ npm run dev
 ```
 6.Abre tu navegador web y accede a http://localhost:3000 para interactuar con la aplicación.
 
-#Despliegue de la Aplicación:
+# Despliegue de la Aplicación:
 
 El cliente de nuestra aplicación está desplegado en Vercel, una plataforma de hosting y despliegue para aplicaciones web estáticas. Vercel proporciona una forma sencilla y eficiente de alojar nuestro cliente, permitiendo una entrega rápida y confiable de la interfaz de usuario al usuario final. Puedes acceder al cliente de nuestra aplicación a través del siguiente enlace: <a href = 'https://pamboo-challenge.vercel.app/'>Click acá</a>
 
