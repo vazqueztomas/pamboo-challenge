@@ -1,4 +1,11 @@
-import { Box, IconButton, List, ListItem, ListItemText } from "@mui/material";
+import {
+  Box,
+  IconButton,
+  List,
+  ListItem,
+  ListItemText,
+  Typography,
+} from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import Loader from "./Loader";
 
@@ -22,10 +29,13 @@ const Listado = ({ lista, getTareas, loading }) => {
     });
     getTareas();
   };
-
   return (
     <Box width={["90%", "50%", "50%", "300px"]}>
-      {loading ? <Loader /> : null}
+      (
+      <Box display={"flex"} justifyContent={"center"}>
+        <Loader />
+      </Box>
+      )
       {lista.length > 0 ? (
         <List sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           {lista.map((e, i) => (
@@ -40,8 +50,6 @@ const Listado = ({ lista, getTareas, loading }) => {
                 padding: "8px 16px",
                 borderRadius: "4px",
               }}
-              onMouseEnter={() => handleMouseEnter(e._id)}
-              onMouseLeave={handleMouseLeave}
               key={i}>
               <ListItemText
                 onClick={() => markTaskComplete(e._id)}
@@ -63,7 +71,11 @@ const Listado = ({ lista, getTareas, loading }) => {
           ))}
         </List>
       ) : (
-        <div>No hay elementos en la lista</div>
+        <div>
+          <Typography variant="h6" my={3} align="center">
+            No hay items en la lista
+          </Typography>
+        </div>
       )}
     </Box>
   );
