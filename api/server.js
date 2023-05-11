@@ -17,12 +17,6 @@ server.get("/", (req, res, next) => {
 });
 server.use("/tasks", require("./routes/tasks"));
 
-// Manejador de errores global
-server.use((err, res) => {
-  console.error(err);
-  res.status(500).json({ error: "Error interno del servidor" });
-});
-
 server.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
 });
