@@ -38,12 +38,17 @@ const deleteTask = async (req, res) => {
 const switchTaskComplete = async (req, res) => {
   try {
     const { id } = req.params;
-    const taskComplete = await Task.findOneAndUpdate(
-      { _id: id },
-      { estado: true }
-    );
+    const task = await Task.findById(id);
 
-    res.status(200).json(taskComplete);
+    if (!task) {
+      return res.status(404).json({ error: "Tarea no encontrada" });
+    }
+
+    task.estado = !task.estado;
+
+    await task.save();
+
+    res.status(200).json(task);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: "Error interno del servidor" });
