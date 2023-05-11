@@ -13,7 +13,7 @@ import { URL_SERVER } from "../src/config/constants";
 
 const Listado = ({ lista, getTareas, loading }) => {
   const deleteTarea = async id => {
-    await fetch(`${URL_SERVER}${id}`, {
+    await fetch(`${URL_SERVER}/${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -23,7 +23,7 @@ const Listado = ({ lista, getTareas, loading }) => {
   };
 
   const markTaskComplete = async id => {
-    await fetch(`${URL_SERVER}${id}`, {
+    await fetch(`${URL_SERVER}/tasks/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

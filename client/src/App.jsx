@@ -23,14 +23,14 @@ function App() {
 
   const getTareas = async () => {
     setLoading(true);
-    const response = await fetch(`${URL_SERVER}tasks`);
+    const response = await fetch(`${URL_SERVER}/tasks`);
     const tareas = await response.json();
     setLista(tareas);
     setLoading(false);
   };
 
   const addTarea = async tarea => {
-    await fetch(`${URL_SERVER}tasks`, {
+    await fetch(`${URL_SERVER}/tasks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
