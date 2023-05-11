@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import {
   Box,
   CssBaseline,
@@ -5,8 +6,8 @@ import {
   Typography,
   createTheme,
 } from "@mui/material";
-import Input from "../components/Input";
 import Listado from "../components/Listado";
+import Input from "../components/Input";
 
 const darkTheme = createTheme({
   palette: {
@@ -15,6 +16,36 @@ const darkTheme = createTheme({
 });
 
 function App() {
+  const [lista, setLista] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const getTareas = async () => {
+    setLoading(true);
+    const response = await fetch("http://localhost:8080/tasks");
+    const tareas = await response.json();
+    setLista(tareas);
+    setLoading(false);
+  };
+
+  const addTarea = async tarea => {
+    await fetch("http://localhost:8080/tasks", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        titulo: tarea,
+        descripcion: "Esta es la descripción",
+        estado: false,
+      }),
+    });
+    getTareas();
+  };
+
+  useEffect(() => {
+    getTareas();
+  }, []);
+
   return (
     <ThemeProvider theme={darkTheme}>
       <CssBaseline />
@@ -28,8 +59,8 @@ function App() {
         <Typography variant="h4" align="center">
           Pamboo Challenge
         </Typography>
-        <Listado />
-        <Input />
+        <Listado lista={lista} getTareas={getTareas} loading={loading} />
+        <Input addTarea={addTarea} />
       </Box>
     </ThemeProvider>
   );

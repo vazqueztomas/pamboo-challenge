@@ -1,23 +1,15 @@
 import { useState } from "react";
 import { Box, Button, TextField } from "@mui/material";
 
-const Input = () => {
+const Input = ({ addTarea }) => {
   const [tareaNueva, setTareaNueva] = useState("");
+
   const onSubmitInput = async e => {
     e.preventDefault();
-    await fetch("http://localhost:8080/tasks", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        _id: Date.now(),
-        titulo: tareaNueva,
-        descripcion: "Esta es la descripción",
-        estado: false,
-      }),
-    });
+    await addTarea(tareaNueva);
+    setTareaNueva("");
   };
+
   return (
     <form onSubmit={e => onSubmitInput(e)}>
       <Box display={"flex"} justifyContent="space-between">
