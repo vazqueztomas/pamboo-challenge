@@ -76,9 +76,19 @@ const Listado = ({ lista, getTareas, loading }) => {
                     primary={e.titulo}
                   />
                   {e.estado ? (
-                    <Chip color="success" label="COMPLETADA" size="small" />
+                    <Chip
+                      color="success"
+                      label="COMPLETADA"
+                      variant="outlined"
+                      size="small"
+                    />
                   ) : (
-                    <Chip color="warning" label="INCOMPLETA" size="small" />
+                    <Chip
+                      color="warning"
+                      label="INCOMPLETA"
+                      variant="outlined"
+                      size="small"
+                    />
                   )}
                   <IconButton
                     edge="end"
