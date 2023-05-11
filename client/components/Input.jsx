@@ -6,6 +6,7 @@ const Input = ({ addTarea }) => {
 
   const onSubmitInput = async e => {
     e.preventDefault();
+    if (tareaNueva == "") return;
     await addTarea(tareaNueva);
     setTareaNueva("");
   };
