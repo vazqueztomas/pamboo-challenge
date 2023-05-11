@@ -9,10 +9,11 @@ import {
 import DeleteIcon from "@mui/icons-material/Delete";
 import Loader from "./Loader";
 import { AnimatePresence, motion } from "framer-motion";
+import { URL_SERVER } from "../src/config/constants";
 
 const Listado = ({ lista, getTareas, loading }) => {
   const deleteTarea = async id => {
-    await fetch(`http://localhost:8080/tasks/${id}`, {
+    await fetch(`${URL_SERVER}${id}`, {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
@@ -22,7 +23,7 @@ const Listado = ({ lista, getTareas, loading }) => {
   };
 
   const markTaskComplete = async id => {
-    await fetch(`http://localhost:8080/tasks/${id}`, {
+    await fetch(`${URL_SERVER}${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

@@ -9,6 +9,7 @@ import {
 import Listado from "../components/Listado";
 import Input from "../components/Input";
 import panda from "../public/panda.png";
+import { URL_SERVER } from "./config/constants";
 
 const darkTheme = createTheme({
   palette: {
@@ -22,14 +23,14 @@ function App() {
 
   const getTareas = async () => {
     setLoading(true);
-    const response = await fetch("http://localhost:8080/tasks");
+    const response = await fetch(`${URL_SERVER}tasks`);
     const tareas = await response.json();
     setLista(tareas);
     setLoading(false);
   };
 
   const addTarea = async tarea => {
-    await fetch("http://localhost:8080/tasks", {
+    await fetch(`${URL_SERVER}tasks`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
