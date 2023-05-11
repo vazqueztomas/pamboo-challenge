@@ -40,8 +40,9 @@ npm run dev
 ```
 5.Inicia el frontend
 ```shell
+cd client
 npm run dev
 ```
-6.Abre tu navegador web y accede a http://localhost:PUERTO para interactuar con la aplicación.
+6.Abre tu navegador web y accede a http://localhost:3000 para interactuar con la aplicación.
 
 
