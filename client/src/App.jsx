@@ -1,5 +1,3 @@
-import Listado from "../components/Listado";
-import Input from "../components/Input";
 import {
   Box,
   CssBaseline,
@@ -7,6 +5,9 @@ import {
   Typography,
   createTheme,
 } from "@mui/material";
+import Input from "../components/Input";
+import Listado from "../components/Listado";
+
 const darkTheme = createTheme({
   palette: {
     mode: "dark",

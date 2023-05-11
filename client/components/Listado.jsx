@@ -46,8 +46,9 @@ const Listado = () => {
         <List sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           {lista.map((e, i) => (
             <ListItem
-              sx={{ color: "white", borderColor: "white" }}
-              style={{
+              sx={{
+                color: "white",
+                borderColor: "white",
                 display: "flex",
                 flexDirection: "row",
                 justifyContent: "space-between",
@@ -59,7 +60,7 @@ const Listado = () => {
               key={i}>
               <ListItemText
                 onClick={() => markTaskComplete(e._id)}
-                style={
+                sx={
                   e.estado
                     ? { textDecoration: "line-through" }
                     : { textDecoration: "none" }
