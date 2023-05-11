@@ -1,5 +1,6 @@
 import {
   Box,
+  Chip,
   IconButton,
   List,
   ListItem,
@@ -72,14 +73,13 @@ const Listado = ({ lista, getTareas, loading }) => {
                   }}>
                   <ListItemText
                     onClick={() => markTaskComplete(e._id)}
-                    style={
-                      e.estado
-                        ? { textDecoration: "line-through" }
-                        : { textDecoration: "none" }
-                    }
                     primary={e.titulo}
                   />
-
+                  {e.estado ? (
+                    <Chip color="success" label="COMPLETADA" size="small" />
+                  ) : (
+                    <Chip color="warning" label="INCOMPLETA" size="small" />
+                  )}
                   <IconButton
                     edge="end"
                     aria-label="delete"
