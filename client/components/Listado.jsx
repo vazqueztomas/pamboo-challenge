@@ -31,11 +31,12 @@ const Listado = ({ lista, getTareas, loading }) => {
   };
   return (
     <Box width={["90%", "50%", "50%", "300px"]}>
-      (
-      <Box display={"flex"} justifyContent={"center"}>
-        <Loader />
-      </Box>
-      )
+      {loading ? (
+        <Box display={"flex"} justifyContent={"center"}>
+          <Loader />
+        </Box>
+      ) : null}
+
       {lista.length > 0 ? (
         <List sx={{ display: "flex", flexDirection: "column", gap: "8px" }}>
           {lista.map((e, i) => (
